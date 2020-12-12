@@ -1,7 +1,7 @@
 # DHBW-S1-2020.12.12-Projektarbeit---Triggered-E-Mail-Client-for-Stock-Prices
 
 
-Ich schreibe einen E-Mail-Client welcher von der API von Finnhub.io Daten über Aktienkurse abfragt.
+Ich habe einen E-Mail-Client geschrieben, welcher von der API von Finnhub.io Daten über Aktienkurse abfragt.
 Das Programm fragt alle 5 Minuten Aktienkurse von vorbestimmten Aktien ab und sendet eine E-Mail an den ausgewählten Empfänger, wenn bei Ausführung des Skripts der aktuelle Preis einer Aktie im Vergleich zum Preis bei Öffnung der Börse des jeweiligen Tages um mehr als den am Anfang ausgewählten Prozentbetrag abweicht oder der Preis gleich geblieben ist.
 Dies wäre dann eine durch die externe API getriggerte E-Mail an mich, damit ich eine Warnung habe und entscheiden kann, ob ich meine Aktien verkaufe oder nicht.
 
