@@ -60,7 +60,6 @@ def get_stock_data():
     url_finnhub = "https://finnhub.io/api/v1/"  # statischer Teil der API-URL
     url_quote = url_finnhub + f'quote?symbol={symbol}&token={api_token}'    # Symbol der Aktie und API-Tokens wird zur URL hinzugefügt
     request = requests.get(url_quote).json()    # Anfrage und Speicherung der Daten im .json-Format
-    """ request =  oder requests.get(url=url_link, params=params_for_request) """
     data_of_url_quote = request # übersichtshalbe Umbenennung der Daten
 
     data_for_output_file = convert_data_for_output(data_of_url_quote) # Aufruf der Methode zum Konvertieren der erhaltenen Daten und Speicherung dieser in einer Variable
