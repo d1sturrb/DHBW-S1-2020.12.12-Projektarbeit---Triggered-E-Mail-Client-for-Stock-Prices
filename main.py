@@ -15,6 +15,7 @@ from time import sleep
 # Aktien-Daten
 api_token = "bus50cf48v6t07kq4lug"  # API-Token für die Benutzung der API von finnhub.io (API-Token ist von Alexander Biber vorgegeben)
 symbol="TSLA"   # Das Symbol der Aktie - Ausschliesslich Symbole der amerikanischen Börse möglich
+delay_for_loop_in_minutes = 0.25 #Gewünschter Zeitabstand in Minuten, wie oft die Kursabfrage der Aktie geschehen soll
 currency_base = "USD"   # Basis für Währungskursumrechnung
 currency_pair = "EUR"   # Währungspaar zur Währungskursumrechnung
 price_difference_percent = 0    # Angabe, bei wie viel Preisunterschied in % zum Öffnungskurs des Tages der Trigger eine E-Mail senden soll
@@ -22,7 +23,7 @@ price_change_since_last_open_in_percent = None  # die Preisdifferenz seit Börse
 price_change_since_last_open_in_percent_for_printing = None # Speicherung der Preisänderung in Prozent mit dem eventuellen Minuszeichen, zur Ausgabe in der Konsole
 
 # E-Mail-Daten
-sender_email = "d1sturrb@outlook.com" # E-Mail mit der gesendet werden soll (bitte nur Outlook/Hotmail-Emailadresse)
+sender_email = "maxmustermann@outlook.com" # E-Mail mit der gesendet werden soll (bitte nur Outlook/Hotmail-Emailadresse)
 receiver_email = sender_email # Empfänger-Emailadresse (hier wird an sich selbst gesendet)
 
 path_to_password = os.path.dirname(os.path.abspath(__file__)) + r"\password.txt" # Pfad zu Passwortdatei im Ordner dieses ausgeführten Python-Skripts
@@ -37,7 +38,6 @@ subject = f"Stonk-Alarm | {symbol} | {current_time}" # E-Mail Betreff als Format
 
 """ In der Main-Methode läuft alle 5 Minuten eine Schleife durch, die prüft, ob eine E-Mail anhand von den Aktienkursdaten gesendet werden soll oder nicht """
 def main():
-    """ """ """ MEHRERE SYMBOLE EINGEBEN """ """ """
     
     while 1:    # unendliche Schleife (Wert 1 bedeutet True), da der Wert auf True gesetzt ist und die Bedingung für die Schleife immer erfüllt ist
         current_stock_data = get_stock_data() # Rückgabewert der Methode ,,get_stock_data()" speichern
@@ -49,8 +49,7 @@ def main():
         if price_change_since_last_open_in_percent > price_difference_percent:  # wenn Kursänderung die ausgewählte Triggerschwelle übertritt, dann wird die E-Mail gesendet
             msg = format_mail(compare_text, current_stock_data)   # zu sendende Nachricht wird in der Methode ,,format_mail" mit den Parametern für den E-Mail-Text formatiert
             send_mail(msg)  # Methode zum E-Mail senden wird mit der zu sendenden Nachricht aufgerufen
-        
-        time.sleep(60 * 5)   # Skript um 5 Minuten bis zum nächsten Durchgang verzögern und so jede 5 Minuten erneut abzuprüfen, ob eine E-Mail gesendet werden soll
+        time.sleep(60 * delay_for_loop_in_minutes)   # Skript um eingestellte Minutenzahl bis zum nächsten Durchgang verzögern und so jedes Mal erneut abzuprüfen, ob eine E-Mail gesendet werden soll
 
 
 """
