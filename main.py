@@ -13,7 +13,7 @@ from time import sleep
 """ Attributes """      """ Alle globalen Attribute (Variablen) für den Programmablauf werden in diesem Bereich gespeichert """
 
 # Aktien-Daten
-api_token = "bus50cf48v6t07kq4lug"  # API-Token für die Benutzung der API von finnhub.io (API-Token ist von Alexander Biber vorgegeben)
+api_token = "ENTER FINNHUB TOKEN"  # API-Token für die Benutzung der API von finnhub.io (API-Token ist von Alexander Biber vorgegeben)
 symbol="TSLA"   # Das Symbol der Aktie - Ausschliesslich Symbole der amerikanischen Börse möglich
 delay_for_loop_in_minutes = 0.25 #Gewünschter Zeitabstand in Minuten, wie oft die Kursabfrage der Aktie geschehen soll
 currency_base = "USD"   # Basis für Währungskursumrechnung
